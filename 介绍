@@ -50,3 +50,131 @@ Python 特点
  国内市场较小（国内以 Python 来做主要开发的，目前只有一些 web2.0 公司）。但时间推移，目前很多国内软件公司，尤其是游戏公司，也开始规模使用他。
  中文资料匮乏（好的 Python 中文资料屈指可数，现在应该变多了）。托社区的福，有几本优秀的教材已经被翻译了，但入门级教材多，高级内容还是只能看英语版。
  构架选择太多（没有像 C# 这样的官方 .net 构架，也没有像 ruby 由于历史较短，构架开发的相对集中。Ruby on Rails 构架开发中小型web程序天下无敌）。不过这也从另一个侧面说明，python比较优秀，吸引的人才多，项目也多。
+
+第一个 Python 程序
+交互式编程
+交互式编程不需要创建脚本文件，是通过 Python 解释器的交互模式进来编写代码。
+
+linux上你只需要在命令行中输入 Python 命令即可启动交互式编程,提示窗口如下：
+
+$ python
+Python 2.7.6 (default, Sep  9 2014, 15:04:36)
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+Window 上在安装 Python 时已经安装了交互式编程客户端，提示窗口如下：
+
+
+
+在 python 提示符中输入以下文本信息，然后按 Enter 键查看运行效果：
+
+>>> print ("Hello, Python!")
+在 Python 2.7.6 版本中,以上实例输出结果如下：
+
+Hello, Python!
+脚本式编程
+通过脚本参数调用解释器开始执行脚本，直到脚本执行完毕。当脚本执行完成后，解释器不再有效。
+
+让我们写一个简单的 Python 脚本程序。所有 Python 文件将以 .py 为扩展名。将以下的源代码拷贝至 test.py 文件中。
+
+print ("Hello, Python!")
+这里，假设你已经设置了 Python 解释器 PATH 变量。使用以下命令运行程序：
+
+$ python test.py
+输出结果：
+
+Hello, Python!
+让我们尝试另一种方式来执行 Python 脚本。修改 test.py 文件，如下所示：
+
+实例
+#!/usr/bin/python
+
+print ("Hello, Python!")
+这里，假定您的Python解释器在/usr/bin目录中，使用以下命令执行脚本：
+
+$ chmod +x test.py     # 脚本文件添加可执行权限
+$ ./test.py
+输出结果：
+
+Hello, Python!
+Python2.x 中使用 Python3.x 的 print 函数
+如果 Python2.x 版本想使用 Python3.x 的 print 函数，可以导入 __future__ 包，该包禁用 Python2.x 的 print 语句，采用 Python3.x 的 print 函数：
+
+实例
+>>> list =["a", "b", "c"]
+>>> print list    # python2.x 的 print 语句
+['a', 'b', 'c']
+>>> from __future__ import print_function  # 导入 __future__ 包
+>>> print list     # Python2.x 的 print 语句被禁用，使用报错
+  File "<stdin>", line 1
+    print list
+             ^
+SyntaxError: invalid syntax
+>>> print (list)   # 使用 Python3.x 的 print 函数
+['a', 'b', 'c']
+>>>
+Python3.x 与 Python2.x 的许多兼容性设计的功能可以通过 __future__ 这个包来导入。
+
+Python 标识符
+在 Python 里，标识符由字母、数字、下划线组成。
+
+在 Python 中，所有标识符可以包括英文、数字以及下划线(_)，但不能以数字开头。
+
+Python 中的标识符是区分大小写的。
+
+以下划线开头的标识符是有特殊意义的。以单下划线开头 _foo 的代表不能直接访问的类属性，需通过类提供的接口进行访问，不能用 from xxx import * 而导入。
+
+以双下划线开头的 __foo 代表类的私有成员，以双下划线开头和结尾的 __foo__ 代表 Python 里特殊方法专用的标识，如 __init__() 代表类的构造函数。
+
+Python 可以同一行显示多条语句，方法是用分号 ; 分开，如：
+
+>>> print ('hello');print ('runoob');
+hello
+runoob
+Python 保留字符
+下面的列表显示了在Python中的保留字。这些保留字不能用作常数或变数，或任何其他标识符名称。
+
+所有 Python 的关键字只包含小写字母。
+
+and	exec	not
+assert	finally	or
+break	for	pass
+class	from	print
+continue	global	raise
+def	if	return
+del	import	try
+elif	in	while
+else	is	with
+except	lambda	yield
+行和缩进
+学习 Python 与其他语言最大的区别就是，Python 的代码块不使用大括号 {} 来控制类，函数以及其他逻辑判断。python 最具特色的就是用缩进来写模块。
+
+缩进的空白数量是可变的，但是所有代码块语句必须包含相同的缩进空白数量，这个必须严格执行。
+
+以下实例缩进为四个空格:
+
+实例
+if True:
+    print ("True")
+else:
+    print ("False")
+以下代码将会执行错误：
+
+实例
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+# 文件名：test.py
+
+if True:
+    print ("Answer")
+    print ("True")
+else:
+    print ("Answer")
+    # 没有严格缩进，在执行时会报错
+  print ("False")
+执行以上代码，会出现如下错误提醒：
+
+  File "test.py", line 11
+    print ("False")
+                  ^
+IndentationError: unindent does not match any outer indentation level
